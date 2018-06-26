@@ -1,0 +1,75 @@
+@import "~antd/lib/style/themes/default.less";
+
+.papaya-header {
+  line-height: @layout-header-height;
+  background-color: @layout-header-background;
+
+  & > .ant-menu {
+    float: left;
+  }
+
+  .userinfo {
+    float: right;
+    margin-right: 24px;
+    color: #fff;
+
+    .username {
+      opacity: 0.8;
+      margin-right: 20px;
+    }
+
+    .logout {
+      .anticon {
+        margin-right: 8px;
+      }
+      color: #fff;
+    }
+  }
+}
+
+.papaya-layout-responsive .papaya-header {
+  .userinfo {
+    margin-right: 0;
+  }
+
+  .anticon-bars {
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+    float: right;
+    line-height: @layout-header-height;
+    padding-left: 24px;
+    padding-right: 12px;
+    margin-right: 12px;
+  }
+  
+  .logout {
+    display: none;
+  }
+}
+
+.papaya-layout-header {
+  .papaya-header {
+    margin-left: 200px;
+  }
+
+  &.papaya-layout-responsive {
+    .papaya-header {
+      margin-left: 80px;
+    }
+  }
+}
+
+.ant-popover.popover-menu {
+  .ant-popover-inner-content .ant-menu {
+    margin: -12px -18px;
+    & > .ant-menu-item:first-child {
+      margin-top: 0;
+    }
+    
+    // XXX: antd 宽度计算 bug，导致箭头和菜单重叠，暂时先隐藏
+    .ant-menu-submenu-arrow {
+      display: none;
+    }
+  }
+}

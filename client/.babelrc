@@ -1,0 +1,15 @@
+{
+  "presets": [
+    ["es2015", { "modules": false}],
+    ["react"]
+  ],
+  "plugins": [
+    ["import", { "libraryName": "antd", "style": true, "libraryDirectory": "es" }],
+    "syntax-dynamic-import",
+    "transform-decorators-legacy",
+    "transform-class-properties",
+    "transform-object-rest-spread"
+  ],
+  "sourceMaps": true,
+  "retainLines": true
+}
