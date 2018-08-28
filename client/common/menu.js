@@ -24,7 +24,7 @@ const menus = [
 ]
 
 // 格式化菜单 设置 id 和 parent
-function formatter(data = [], parent) {
+function formatter (data = [], parent) {
   data.forEach((data, index) => {
     data.parent = parent
     // 设置默认 id

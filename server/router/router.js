@@ -1,11 +1,17 @@
 const Router = require('koa-router')
-const appConfig = require('utils/config')
-
-const { apiPrefix } = appConfig
+const path = require('path')
+const glob = require('glob')
 
 // 路由定义
-const router = new Router({ prefix: apiPrefix })
+const router = new Router({ prefix: 'api' })
 
-router.post('/user/save', require('controllers/user/save'))
+const controllersDir = path.join(__dirname, '../controllers/api')
+glob.sync('**/*.js', {
+  cwd: controllersDir
+}).forEach((ctrPath) => {
+  const controller = require(path.join(controllersDir, ctrPath))
+
+  router.all('/api/' + ctrPath, controller)
+})
 
 module.exports = router

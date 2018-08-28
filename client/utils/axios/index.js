@@ -3,7 +3,7 @@ import qs from 'qs'
 import paramsUtil from './params'
 import { baseURI, apiPrefix } from 'common/config'
 
-function throwHttpError(message, code) {
+function throwHttpError (message, code) {
   const error = new Error(message)
   error.name = 'HttpError'
   error.code = code
@@ -18,7 +18,7 @@ const instance = axios.create({
     // 如果项目约定格式为 form，请修改 'Content-Type' 为: 'application/x-www-form-urlencoded'
     'Content-Type': 'application/json;charset=utf-8'
   },
-  paramsSerializer(params) {
+  paramsSerializer (params) {
     params = paramsUtil.parseParams(params, { skipEmpty: true })
 
     // koa 使用 querystring.pare 解析
@@ -26,12 +26,12 @@ const instance = axios.create({
     return qs.stringify(params, {
       skipNulls: true,
       arrayFormat: 'repeat',
-      encoder: function(str) {
+      encoder: function (str) {
         return encodeURIComponent(str)
       }
     })
   },
-  transformRequest(data, header) {
+  transformRequest (data, header) {
     // 文件上传
     const isMultiPart = header['Content-Type'] === 'multipart/form-data'
     if (isMultiPart) {
@@ -51,7 +51,7 @@ const instance = axios.create({
 })
 
 instance.interceptors.response.use(
-  function(response) {
+  function (response) {
     let result = response.data
     if (!result) {
       throwHttpError('请求异常！')
@@ -67,7 +67,7 @@ instance.interceptors.response.use(
 
     return result.data
   },
-  function(error) {
+  function (error) {
     if (error.response) {
       const data = error.response.data
       if (data && data.error) {

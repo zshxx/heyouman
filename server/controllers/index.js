@@ -13,12 +13,12 @@ module.exports = async ctx => {
 }
 
 // 提供给前台 redux 作为初始化 state
-function getInitState() {
+function getInitState () {
   return {}
 }
 
 // 获取全局配置
-async function getConfig(ctx) {
+async function getConfig (ctx) {
   return {
     // 基础 URI
     baseURI,
@@ -27,6 +27,6 @@ async function getConfig(ctx) {
     // 系统编号
     appCode,
     // 用户信息
-    userInfo: { nickname: ctx.session.userName }
+    userInfo: { nickname: '' }
   }
 }
