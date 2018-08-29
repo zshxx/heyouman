@@ -11,13 +11,15 @@ class LayoutApp extends Component {
     common: PropTypes.object
   }
   render () {
+    const { common } = this.props
     return (
       <div className='m-container'>
         <Layout>
           <Sider>Sider</Sider>
           <Layout>
-            <Header>Header</Header>
+            <Header>Header {common}</Header>
             <Content>
+              <Router />
             </Content>
             <Footer>Footer</Footer>
           </Layout>

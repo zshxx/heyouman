@@ -3,8 +3,6 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import { MainContent } from 'components'
-
 import Search from './components/user-search'
 import List from './components/user-list'
 import Detail from './components/user-detail'
@@ -33,7 +31,7 @@ export default class UserPage extends React.Component {
 
     return (
       // 为了保证页面高度自动滚动，请使用 MainContent 组件
-      <MainContent
+      <div
         // 面包屑
         crumbs={['示例系统', '用户管理']}
       >
@@ -55,7 +53,7 @@ export default class UserPage extends React.Component {
           query={action.query}
           hideModal={action.hideModal}
         />
-      </MainContent>
+      </div>
     )
   }
 }
