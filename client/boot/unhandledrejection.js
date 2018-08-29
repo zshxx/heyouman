@@ -3,7 +3,7 @@
 import { message } from 'antd'
 
 let isLogoutMessage = false
-window.addEventListener('unhandledrejection', function(e) {
+window.addEventListener('unhandledrejection', function (e) {
   if (e.detail) {
     const { reason } = e.detail
     if (reason && reason.name === 'HttpError') {

@@ -5,7 +5,7 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 
 import reducers from './root-reducer'
 
-export default function(initialState) {
+export default function (initialState) {
   return createStore(
     combineReducers(reducers),
     initialState,

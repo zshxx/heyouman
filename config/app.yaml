@@ -4,9 +4,6 @@ appCode: HUM
 # 系统的标题
 pageTitle: 禾优曼管理系统
 
-# 主题
-theme: antd/daybreak-blue
-
 dbOption:
     host : 'localhost'
     port : '3306'

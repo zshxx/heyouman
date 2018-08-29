@@ -4,8 +4,7 @@ export {
   Section,
   Toolbar,
   Bundle,
-  MainContent,
-  WaterMark
+  MainContent
 } from '@wac/papaya-ui'
 
 export { default as Auth } from './auth'

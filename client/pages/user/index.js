@@ -9,7 +9,7 @@ import Search from './components/user-search'
 import List from './components/user-list'
 import Detail from './components/user-detail'
 
-import { query, save, hideModal, showModal, remove } from './user'
+import { query, save, hideModal, showModal, remove } from './reducer'
 @connect(
   state => ({ user: state.user }),
   dispatch => ({
@@ -22,11 +22,11 @@ export default class UserPage extends React.Component {
     action: PropTypes.object.isRequired
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.props.action.query()
   }
 
-  render() {
+  render () {
     const { user, action } = this.props
     const list = user.get('list')
     const modal = user.get('modal')

@@ -8,30 +8,24 @@ import { Provider } from 'react-redux'
 import { Router, Route } from 'react-router-dom'
 import { LocaleProvider } from 'antd'
 import zhCN from 'antd/lib/locale-provider/zh_CN'
+import im from 'immutable'
 
-import { WaterMark } from 'components'
-import { userInfo } from 'common/config'
-import CoreRouter from './router'
-import withLayout from './layout/with-layout'
+import Home from './pages/home'
 
 import createStore from './store/create'
 import history from './utils/history'
 
-const { nickname } = userInfo
-const RouteComponent = withLayout()(CoreRouter)
-
-const store = createStore(window.__INITIAL_STATE__)
+const store = createStore(im.fromJS(window.__INITIAL_STATE__))
 
 ReactDOM.render(
-  [
-    <LocaleProvider key='provider' locale={zhCN}>
-      <Provider store={store}>
-        <Router history={history}>
-          <Route path='/' component={RouteComponent} />
-        </Router>
-      </Provider>
-    </LocaleProvider>,
-    <WaterMark key='watermark' text={nickname} freeze />
-  ],
+
+  <LocaleProvider key='provider' locale={zhCN}>
+    <Provider store={store}>
+      <Router history={history}>
+        <Route path='/' component={Home} />
+      </Router>
+    </Provider>
+  </LocaleProvider>
+  ,
   document.getElementById('root')
 )

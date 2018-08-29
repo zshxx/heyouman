@@ -19,6 +19,7 @@ const isDev = env === 'development'
 
 const appConfigPath = path.join(root, 'config/app.yaml')
 const appConfig = yaml.safeLoad(fs.readFileSync(appConfigPath))
+
 const pkg = require('../package.json')
 const homeDir = os.homedir()
 const happyTempDir = path.join(homeDir, `.happypack/${pkg.group}/${pkg.name}`)
@@ -139,8 +140,7 @@ module.exports = {
         {
           loader: 'less-loader',
           options: {
-            sourceMap: isDev,
-            modifyVars: getTheme(appConfig.theme)
+            sourceMap: isDev
           }
         }
       ],
@@ -163,24 +163,4 @@ module.exports = {
       minChunks: 4
     })
   ].concat(plugins)
-}
-
-// 获取主题
-function getTheme(theme) {
-  // 全局默认配置
-  const defaultTheme = require(path.join(srcPath, 'theme/default'))
-
-  // 已配置主题
-  if (theme) {
-    const themePath = path.join(srcPath, 'theme', theme)
-
-    if (fs.existsSync(`${themePath}.js`)) {
-      return Object.assign(defaultTheme, require(themePath))
-    } else {
-      // eslint-disable-next-line
-      console.warn(`WARNING: 主题 ${theme} 不存在，请确认主题配置是否正确`)
-    }
-  }
-
-  return defaultTheme
 }

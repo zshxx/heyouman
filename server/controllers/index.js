@@ -14,7 +14,12 @@ module.exports = async ctx => {
 
 // 提供给前台 redux 作为初始化 state
 function getInitState () {
-  return {}
+  const common = {
+    productid: 1
+  }
+  return {
+    common
+  }
 }
 
 // 获取全局配置
