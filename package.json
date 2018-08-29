@@ -25,6 +25,7 @@
   "license": "MIT",
   "lint-staged": {
     "**/*.js": [
+      "eslint --fix --format codeframe",
       "git add"
     ]
   },
@@ -33,6 +34,7 @@
     "antd": "^3.2.1",
     "app-module-path": "^2.2.0",
     "axios": "^0.16.2",
+    "babel-eslint": "^8.0.0",
     "babel-polyfill": "^6.9.0",
     "babel-runtime": "^6.9.0",
     "bluebird": "^3.4.1",
