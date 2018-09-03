@@ -16,8 +16,9 @@ const env = process.env.NODE_ENV || 'development'
 
 const devIp = ip()[0]
 const root = path.join(__dirname, '..')
-const viewsPath = path.join(root, 'server/views')
+const viewsPath = path.join(root, 'src/server/views')
 const configPath = path.join(root, `config/webpack.config.${env}`)
+
 const appConfigPath = path.join(root, 'config/app.yaml')
 
 const config = require(configPath)
@@ -65,7 +66,7 @@ const server = new WebpackDevServer(compiler, {
   },
 
   // 设置 webpack-dev-server 启动的 express 的 app
-  setup(app) {
+  setup (app) {
     app.use(bodyParser.json())
     app.use(
       bodyParser.urlencoded({
@@ -73,7 +74,7 @@ const server = new WebpackDevServer(compiler, {
       })
     )
 
-    function requireUncached(module) {
+    function requireUncached (module) {
       try {
         // 删除缓存，动态加载
         delete require.cache[require.resolve(module)]
@@ -84,7 +85,7 @@ const server = new WebpackDevServer(compiler, {
     }
 
     // 根据 mock 请求发送响应
-    function sendValue(req, res, value) {
+    function sendValue (req, res, value) {
       if (typeof value === 'function') {
         value = value(req, res)
       }
@@ -110,14 +111,14 @@ const server = new WebpackDevServer(compiler, {
 
     // 对于每个 mock 请求，require mock 文件夹下的对应路径文件，并返回响应
     Object.keys(mockMap).forEach(mockPath => {
-      app.all(path.posix.join('/mock', mockPath), function(req, res) {
+      app.all(path.posix.join('/mock', mockPath), function (req, res) {
         const value = requireUncached(path.join(root, 'mock', mockMap[mockPath]))
 
         sendValue(req, res, value)
       })
     })
 
-    app.all('/mock/*', function(req, res) {
+    app.all('/mock/*', function (req, res) {
       const mockPath = path.join(root, req.path)
 
       const value = requireUncached(mockPath)

@@ -13,12 +13,12 @@ const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length })
 const entry = {}
 const plugins = []
 const root = path.join(__dirname, '../')
-const srcPath = path.join(root, 'client')
+const srcPath = path.join(root, 'src/client')
 const env = process.env.NODE_ENV || 'development'
 const isDev = env === 'development'
 
-const appConfigPath = path.join(root, 'config/app.yaml')
-const appConfig = yaml.safeLoad(fs.readFileSync(appConfigPath))
+// const appConfigPath = path.join(root, 'config/app.yaml')
+// const appConfig = yaml.safeLoad(fs.readFileSync(appConfigPath))
 
 const pkg = require('../package.json')
 const homeDir = os.homedir()
@@ -52,7 +52,14 @@ module.exports = {
       components: path.join(srcPath, 'components'),
       utils: path.join(srcPath, 'utils'),
       assets: path.join(srcPath, 'assets')
-    }
+    },
+    modules: [
+      srcPath,
+      'components',
+      'node_modules',
+      'daos',
+      'contants'
+    ]
   },
   module: {
     rules: [

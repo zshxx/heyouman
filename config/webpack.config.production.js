@@ -10,7 +10,6 @@ const baseConfig = require('./webpack.config.base')
 const root = path.join(__dirname, '../')
 const appConfigPath = path.join(root, 'config/app.yaml')
 const appConfig = yaml.safeLoad(fs.readFileSync(appConfigPath))
-const pkgJSON = require('../package.json')
 
 let buildPath
 let publicPath
@@ -19,9 +18,6 @@ if (appConfig.out) {
   const appName = appConfig.appCode.toLowerCase()
   buildPath = path.join(root, `build/${appName}/static`)
   publicPath = `/${appName}/static/`
-} else {
-  buildPath = path.join(root, 'build')
-  publicPath = `//s1.wacdn.com/s/${pkgJSON.name}/`
 }
 
 const config = Object.assign({}, baseConfig, {

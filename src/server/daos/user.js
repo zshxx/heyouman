@@ -1,11 +1,11 @@
 module.exports = class {
-  findOrSave (opts = {}) {
+  async findOrSave (opts = {}) {
     return global.M.User.findOrCreate({
       where: {
-        userNamePinyin: opts.nickname
+        userName: opts.userName
       },
       defaults: {
-        userName: opts.nicknameCN
+        userName: opts.userName
       }
     })
   }
@@ -16,9 +16,11 @@ module.exports = class {
     })
   }
 
-  getUserById (id) {
+  async getUserById (userName) {
     return global.M.User.findOne({
-      where: {id}
+      where: {
+        userName
+      }
     })
   }
 }

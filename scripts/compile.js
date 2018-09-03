@@ -5,12 +5,11 @@
 const path = require('path')
 const url = require('url')
 const fs = require('fs-extra')
-const ip = require('dev-ip');
+const ip = require('dev-ip')
 const glob = require('glob')
 const yaml = require('js-yaml')
 const webpack = require('webpack')
 const Promise = require('bluebird')
-const deploy = require('@wac/static-deploy')
 
 Promise.promisifyAll(fs)
 

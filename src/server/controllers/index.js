@@ -1,11 +1,11 @@
-const { baseURI, appCode, apiPrefix, pageTitle = '暂无标题' } = require('utils/config')
+const { baseURI, appCode, apiPrefix } = require('utils/config')
+const UserDao = require('daos/user')
 
 module.exports = async ctx => {
   const initState = getInitState()
   const config = await getConfig(ctx)
 
   await ctx.render('index', {
-    pageTitle,
     config: JSON.stringify(config),
     initState: JSON.stringify(initState),
     baseURI
@@ -24,6 +24,9 @@ function getInitState () {
 
 // 获取全局配置
 async function getConfig (ctx) {
+  const userdao = new UserDao()
+  const userInfo = await userdao.getUserById('admin')
+
   return {
     // 基础 URI
     baseURI,
@@ -32,6 +35,12 @@ async function getConfig (ctx) {
     // 系统编号
     appCode,
     // 用户信息
-    userInfo: { nickname: '' }
+    userInfo: {
+      userAddress: userInfo.userAddress,
+      userAliasName: userInfo.userAliasName,
+      userName: userInfo.userName,
+      userSex: userInfo.userSex,
+      userTel: userInfo.userTel
+    }
   }
 }

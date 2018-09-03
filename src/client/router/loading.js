@@ -15,9 +15,6 @@ const Loading = ({ error }) => {
           flexDirection: 'row'
         }}
       >
-        <div style={{ width: 450 }}>
-          <img src="http://s1.wacdn.com/wis/506/e8fc685bc182bead_422x193.png" />
-        </div>
         <div style={{ color: '#434e59', fontSize: 50, fontWeight: 700 }}>页面咔嚓了:(</div>
       </div>
     )

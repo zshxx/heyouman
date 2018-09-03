@@ -14,7 +14,7 @@ class LayoutApp extends Component {
     const { common } = this.props
     return (
       <div className='m-container'>
-        <Layout>
+        <Layout className='m-layout'>
           <Sider>Sider</Sider>
           <Layout>
             <Header>Header {common}</Header>

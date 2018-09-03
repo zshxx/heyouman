@@ -20,9 +20,6 @@ if (appConfig.out) {
   const appName = appConfig.appCode.toLowerCase()
   buildPath = path.join(root, `build/${appName}/static`)
   publicPath = `/${appName}/static/`
-} else {
-  buildPath = path.join(root, 'build')
-  publicPath = `//test.wacdn.com/s/${pkgJSON.name}/`
 }
 
 const config = Object.assign({}, baseConfig, {

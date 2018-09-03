@@ -6,7 +6,7 @@
   "scripts": {
     "start": "run-p server dev",
     "start-test": "run-p server-test dev",
-    "server": "nodemon --inspect -e js,json,yaml -w config -w server server/server.js",
+    "server": "nodemon --inspect=9229 -e js,json,yaml -w config -w server src/server/server.js",
     "server-test": "cross-env NODE_ENV=test npm run server",
     "dev": "nodemon -w config -w scripts -w mock/mock-map.js scripts/server.js",
     "lint": "eslint . --fix --format codeframe",
@@ -30,7 +30,6 @@
     ]
   },
   "dependencies": {
-    "@wac/papaya-ui": "^4.0.0",
     "antd": "^3.2.1",
     "app-module-path": "^2.2.0",
     "axios": "^0.16.2",

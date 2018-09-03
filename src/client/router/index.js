@@ -8,7 +8,6 @@ export default class CoreRouter extends React.PureComponent {
     return (
       <Switch>
         <Route component={lazyloader('user')} path='/user' />
-        <Route component={lazyloader('ui-demo')} path='/ui-demo' />
         <Redirect to='/user' />
       </Switch>
     )
