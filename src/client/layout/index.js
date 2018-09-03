@@ -3,25 +3,29 @@ import PropTypes from 'prop-types'
 import { Layout } from 'antd'
 import './index.less'
 import Router from '../router'
+import HeaderInfo from './header'
 
-const { Footer, Sider, Content, Header } = Layout
+const { Sider, Content, Header } = Layout
 
 class LayoutApp extends Component {
   static propTypes = {
-    common: PropTypes.object
+    userInfo: PropTypes.object
   }
   render () {
-    const { common } = this.props
+    const { userInfo } = this.props
     return (
       <div className='m-container'>
         <Layout className='m-layout'>
-          <Sider>Sider</Sider>
+          <Header>
+            <HeaderInfo userInfo={userInfo} />
+          </Header>
           <Layout>
-            <Header>Header {common}</Header>
+            <Sider>
+            Sider
+            </Sider>
             <Content>
               <Router />
             </Content>
-            <Footer>Footer</Footer>
           </Layout>
         </Layout>
       </div>

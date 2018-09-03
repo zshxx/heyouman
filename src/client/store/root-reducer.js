@@ -3,8 +3,10 @@
  */
 import user from '../pages/user/reducer'
 import common from './common'
+import userinfo from './userinfo'
 
 export default {
-  user,
-  common
+  common,
+  userinfo,
+  user
 }

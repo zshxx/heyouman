@@ -1,6 +1,7 @@
 import Thunk from 'redux-thunk'
 import promiseMiddleware from 'redux-promise-middleware'
 import { createStore, combineReducers, applyMiddleware } from 'redux'
+// import { combineReducers } from 'redux-immutablejs'
 import { composeWithDevTools } from 'redux-devtools-extension'
 
 import reducers from './root-reducer'

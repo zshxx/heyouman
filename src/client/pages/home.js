@@ -5,9 +5,9 @@ import { bindActionCreators } from 'redux'
 import * as Actions from './actions'
 
 function mapStateToProps (state) {
-  const common = state.common
+  const userInfo = state.userinfo
   return {
-    productid: common.productid
+    userInfo
   }
 }
 function mapDispatchToProps (dispatch) {

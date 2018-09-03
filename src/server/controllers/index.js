@@ -2,7 +2,7 @@ const { baseURI, appCode, apiPrefix } = require('utils/config')
 const UserDao = require('daos/user')
 
 module.exports = async ctx => {
-  const initState = getInitState()
+  const initState = await getInitState()
   const config = await getConfig(ctx)
 
   await ctx.render('index', {
@@ -13,34 +13,31 @@ module.exports = async ctx => {
 }
 
 // 提供给前台 redux 作为初始化 state
-function getInitState () {
-  const common = {
-    productid: 1
-  }
-  return {
-    common
-  }
-}
-
-// 获取全局配置
-async function getConfig (ctx) {
+async function getInitState () {
   const userdao = new UserDao()
   const userInfo = await userdao.getUserById('admin')
-
+  const common = {
+  }
   return {
-    // 基础 URI
-    baseURI,
-    // ajax 请求前缀
-    apiPrefix,
-    // 系统编号
-    appCode,
-    // 用户信息
-    userInfo: {
+    common,
+    userinfo: {
       userAddress: userInfo.userAddress,
       userAliasName: userInfo.userAliasName,
       userName: userInfo.userName,
       userSex: userInfo.userSex,
       userTel: userInfo.userTel
     }
+  }
+}
+
+// 获取全局配置
+async function getConfig (ctx) {
+  return {
+    // 基础 URI
+    baseURI,
+    // ajax 请求前缀
+    apiPrefix,
+    // 系统编号
+    appCode
   }
 }

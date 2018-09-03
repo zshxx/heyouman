@@ -3,7 +3,7 @@ import Loadable from 'react-loadable'
 import NProgress from 'nprogress'
 import Loading from './loading'
 
-export default function lazyloader(path) {
+export default function lazyloader (path) {
   return Loadable({
     loader: () => {
       NProgress.start()
@@ -13,7 +13,7 @@ export default function lazyloader(path) {
       )
     },
     render: (loaded, props) => {
-      NProgress.done();
+      NProgress.done()
       const LoadableComponent = loaded.default || loaded
       return <LoadableComponent {...props} />
     },

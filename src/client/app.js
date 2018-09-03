@@ -1,6 +1,6 @@
 // 页面初始化
 
-import './boot'
+import './common'
 
 import React from 'react'
 import ReactDOM from 'react-dom'
@@ -15,7 +15,7 @@ import Home from './pages/home'
 import createStore from './store/create'
 import history from './utils/history'
 
-const store = createStore(im.fromJS(window.__INITIAL_STATE__))
+const store = createStore(window.__INITIAL_STATE__)
 
 ReactDOM.render(
 
