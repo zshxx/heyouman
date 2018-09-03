@@ -14,7 +14,6 @@
     "test": "jest --forceExit",
     "check": "npm-check --update --skip-unused",
     "precommit": "lint-staged",
-    "prepush": "node scripts/plugin.js",
     "compile": "node scripts/compile.js",
     "deploy": "node scripts/deploy.js"
   },
