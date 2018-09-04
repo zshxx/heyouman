@@ -8,7 +8,6 @@ import { Provider } from 'react-redux'
 import { Router, Route } from 'react-router-dom'
 import { LocaleProvider } from 'antd'
 import zhCN from 'antd/lib/locale-provider/zh_CN'
-import im from 'immutable'
 
 import Home from './pages/home'
 
