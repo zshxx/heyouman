@@ -1,12 +1,16 @@
 import constants from './constants'
-// 选择项目
+import axios from 'utils/axios'
+
+// 新增公司
 export const handleSelectProduct = val => dispatch => {
-  if (val === 'new') {
-    this.handleModalVisible()(dispatch)
-    return
-  }
-  dispatch({
-    type: constants.HOME_ACTION_SELECT,
-    payload: val
-  })
+  axios({
+    url: '/api/',
+    method: 'post',
+    data: {}
+  }).then(data => {
+    dispatch({
+      type: constants.GET_SUPPORT_BANK_LIST,
+      payload: data.result
+    })
+  }).catch(e => {})
 }

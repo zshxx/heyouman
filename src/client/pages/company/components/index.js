@@ -1,24 +1,17 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { Row, Col, Button, Icon, Select } from 'antd'
-import './index.less'
+import { Route, Switch } from 'react-router-dom'
 
-export default class Company extends Component {
-  static propTypes = {
-    getPoolList: PropTypes.func
-  }
-  constructor (props) {
-    super(props)
-    this.state = {
-      showCardModal: false,
-      cardActionType: ''
-    }
-  }
-  componentDidMount () {
-  }
+import Add from 'pages/company/add'
+import List from 'pages/company/list'
+
+class Company extends Component {
   render () {
     return (
-      <div className='m-company'>客户管理</div>
+      <Switch>
+        <Route exact component={Add} path='/company/add' />
+        <Route component={List} path='/' />
+      </Switch>
     )
   }
 }
+export default Company

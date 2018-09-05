@@ -24,7 +24,7 @@ class LayoutApp extends Component {
             <Sider className='m-sider'>
               <SideBar />
             </Sider>
-            <Content>
+            <Content className='m-content'>
               <Router />
             </Content>
           </Layout>
