@@ -13,7 +13,6 @@
     "lint-staged": "lint-staged",
     "test": "jest --forceExit",
     "check": "npm-check --update --skip-unused",
-    "precommit": "lint-staged",
     "compile": "node scripts/compile.js",
     "deploy": "node scripts/deploy.js"
   },

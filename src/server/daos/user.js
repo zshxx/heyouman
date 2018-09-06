@@ -12,7 +12,7 @@ module.exports = class {
   // 获取用户列表
   async getUserList () {
     return global.M.User.findAll({
-      attributes: [['id', 'uid'], 'userName', 'userNamePinyin']
+      attributes: [['id', 'uid'], 'userName']
     })
   }
 

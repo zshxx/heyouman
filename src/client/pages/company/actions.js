@@ -2,15 +2,18 @@ import constants from './constants'
 import axios from 'utils/axios'
 
 // 新增公司
-export const handleSelectProduct = val => dispatch => {
+export const handleSave = val => dispatch => {
   axios({
-    url: '/api/',
+    url: '/company/save',
     method: 'post',
-    data: {}
+    data: {
+      ...val
+    }
   }).then(data => {
-    dispatch({
-      type: constants.GET_SUPPORT_BANK_LIST,
-      payload: data.result
-    })
+    console.log(data)
+    // dispatch({
+    //   type: constants.GET_COMPANY_LIST,
+    //   payload: data.result
+    // })
   }).catch(e => {})
 }

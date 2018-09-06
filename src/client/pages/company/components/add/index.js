@@ -30,7 +30,8 @@ const companyType = [
 
 class Company extends Component {
   static propTypes = {
-    form: PropTypes.object
+    form: PropTypes.object,
+    handleSave: PropTypes.func
   }
   constructor (props) {
     super(props)
@@ -43,10 +44,12 @@ class Company extends Component {
   }
   handleSubmit = (e) => {
     e.preventDefault()
-    this.props.form.validateFields((err, values) => {
+    const { handleSave, form } = this.props
+    form.validateFields((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values)
       }
+      handleSave(values)
     })
   }
   render () {
@@ -100,7 +103,7 @@ class Company extends Component {
               })(
                 <RadioGroup>
                   {companyType.map((item) => {
-                    return <Radio value={item.value}>{item.label}</Radio>
+                    return <Radio key={item.value} value={item.value}>{item.label}</Radio>
                   })}
                 </RadioGroup>
               )}
@@ -109,7 +112,7 @@ class Company extends Component {
               {...formItemLayout}
               label='公司名称'
             >
-              {getFieldDecorator('company_name', {
+              {getFieldDecorator('companyName', {
                 rules: [{
                   required: true, message: 'Please input your E-mail!'
                 }]
@@ -121,7 +124,7 @@ class Company extends Component {
               {...formItemLayout}
               label='英文名称'
             >
-              {getFieldDecorator('company_en_name', {
+              {getFieldDecorator('companyEnName', {
                 rules: [{
                 }]
               })(
@@ -132,7 +135,7 @@ class Company extends Component {
               {...formItemLayout}
               label='城市'
             >
-              {getFieldDecorator('company_city', {
+              {getFieldDecorator('companyCity', {
                 rules: [{
                   required: true, message: 'Please input your E-mail!'
                 }]
@@ -144,7 +147,7 @@ class Company extends Component {
               label='行业'
               {...formItemLayout}
             >
-              {getFieldDecorator('company_industry', {
+              {getFieldDecorator('companyIndustry', {
                 rules: [{
                   required: true, message: 'Please input your E-mail!'
                 }]
@@ -156,7 +159,7 @@ class Company extends Component {
               label='公司简写'
               {...formItemLayout}
             >
-              {getFieldDecorator('company_alias', {
+              {getFieldDecorator('companyAlias', {
                 rules: [{
                 }]
               })(
@@ -167,7 +170,7 @@ class Company extends Component {
               label='电话'
               {...formItemLayout}
             >
-              {getFieldDecorator('company_tel', {
+              {getFieldDecorator('companyTel', {
                 rules: [{
                   required: true, message: 'Please input your E-mail!'
                 }]
@@ -179,7 +182,7 @@ class Company extends Component {
               label='地址'
               {...formItemLayout}
             >
-              {getFieldDecorator('company_address', {
+              {getFieldDecorator('companyAddress', {
                 rules: [{
                   required: true, message: 'Please input your E-mail!'
                 }]
@@ -191,7 +194,7 @@ class Company extends Component {
               label='邮箱'
               {...formItemLayout}
             >
-              {getFieldDecorator('contact_email', {
+              {getFieldDecorator('contactEmail', {
                 rules: [{
                   required: true, message: 'Please input your E-mail!'
                 }]
@@ -203,7 +206,7 @@ class Company extends Component {
               label='联系人'
               {...formItemLayout}
             >
-              {getFieldDecorator('contact_name', {
+              {getFieldDecorator('contactName', {
                 rules: [{
                   required: true, message: 'Please input your E-mail!'
                 }]
@@ -215,7 +218,7 @@ class Company extends Component {
               label='联系电话'
               {...formItemLayout}
             >
-              {getFieldDecorator('contact_tel', {
+              {getFieldDecorator('contactTel', {
                 rules: [{
                   required: true, message: 'Please input your E-mail!'
                 }]
@@ -227,7 +230,7 @@ class Company extends Component {
               label='客户简介'
               {...formItemLayout100}
             >
-              {getFieldDecorator('company_profile', {
+              {getFieldDecorator('companyProfile', {
                 rules: [{
                 }]
               })(

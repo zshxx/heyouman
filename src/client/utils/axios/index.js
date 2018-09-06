@@ -1,7 +1,7 @@
 import axios from 'axios'
 import qs from 'qs'
 import paramsUtil from './params'
-import { baseURI, apiPrefix } from 'common/config'
+import { apiPrefix } from 'common/config'
 
 function throwHttpError (message, code) {
   const error = new Error(message)
@@ -12,7 +12,7 @@ function throwHttpError (message, code) {
 }
 
 const instance = axios.create({
-  baseURL: baseURI + apiPrefix,
+  baseURL: apiPrefix,
   headers: {
     'x-requested-with': 'XMLHttpRequest',
     // 如果项目约定格式为 form，请修改 'Content-Type' 为: 'application/x-www-form-urlencoded'

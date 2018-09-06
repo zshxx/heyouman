@@ -5,9 +5,9 @@ module.exports = class {
       attributes: [['id', 'uid'], 'userName', 'userNamePinyin']
     })
   }
-  async SaveCompany () {
+  async SaveCompany (params) {
     return global.M.Company.create({
-      attributes: [['id', 'uid'], 'userName', 'userNamePinyin']
+      ...params
     })
   }
 }

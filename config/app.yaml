@@ -11,7 +11,7 @@ dbOption:
     password : 'Anthony1021'
     database : 'hum'
     connectionLimit: 20
-
+apiPrefix: '/api'
 server:
   port: 8080
   devPort : 9005
