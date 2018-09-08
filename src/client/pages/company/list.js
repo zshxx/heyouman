@@ -5,9 +5,11 @@ import { bindActionCreators } from 'redux'
 import * as Actions from './actions'
 
 function mapStateToProps (state) {
-  const userInfo = state.userinfo
+  const company = state.company
   return {
-    userInfo
+    list: company.get('list'),
+    pageSize: company.get('pageSize'),
+    page: company.get('page')
   }
 }
 function mapDispatchToProps (dispatch) {

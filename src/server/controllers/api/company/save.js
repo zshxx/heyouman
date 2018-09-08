@@ -1,4 +1,4 @@
-// 获取用户列表
+// 新增公司
 const Company = require('daos/company')
 module.exports = async ctx => {
   const company = new Company()

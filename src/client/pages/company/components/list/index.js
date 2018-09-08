@@ -1,12 +1,43 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import history from 'utils/history'
-import { Row, Col, Button, Icon, Select } from 'antd'
+import SearchForm from '../search-form'
+import { Button, Table, Divider } from 'antd'
 import './index.less'
+
+const columns = [{
+  title: '公司名称',
+  dataIndex: 'companyName'
+}, {
+  title: 'Age',
+  dataIndex: 'age',
+  key: 'age'
+}, {
+  title: 'Address',
+  dataIndex: 'address',
+  key: 'address'
+}, {
+  title: 'Tags',
+  key: 'tags',
+  dataIndex: 'tags'
+}, {
+  title: 'Action',
+  key: 'action',
+  render: (text, record) => (
+    <span>
+      <a href='javascript:;'>Invite {record.name}</a>
+      <Divider type='vertical' />
+      <a href='javascript:;'>Delete</a>
+    </span>
+  )
+}]
 
 export default class Company extends Component {
   static propTypes = {
-    getPoolList: PropTypes.func
+    list: PropTypes.object,
+    getComoanyList: PropTypes.func,
+    pageSize: PropTypes.number,
+    page: PropTypes.number
   }
   constructor (props) {
     super(props)
@@ -16,14 +47,38 @@ export default class Company extends Component {
     }
   }
   componentDidMount () {
+    const { page, pageSize } = this.props
+
+    this.props.getComoanyList({ page, pageSize })
   }
   handleClick = () => {
     history.push('/company/add')
   }
+  getContractList = () => {
+    history.push('/company/add')
+  }
   render () {
+    const { list, page, pageSize } = this.props
+    const dataSource = list.toJS()
+
+    const pagination = {
+      total: dataSource.count,
+      current: page,
+      pageSize,
+      onChange: page => this.getContractList({ page }),
+      showTotal: total => `总共 ${total}条`
+    }
     return (
-      <div className='m-company'>客户管理
-        <Button onClick={this.handleClick}>添加</Button>
+      <div className='m-company'>
+        <SearchForm />
+        <Button type='primary' onClick={this.handleClick}>新增客户</Button>
+        <Table
+          className='m-company-list'
+          columns={columns}
+          bordered
+          pagination={pagination}
+          dataSource={dataSource.rows}
+        />
       </div>
     )
   }

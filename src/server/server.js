@@ -40,7 +40,7 @@ const port = config.server.port
 
 // 使用中间件
 app.use(healthCheck())
-// app.use(favicon(path.join(__dirname, '../client/public/favicon.ico')))
+app.use(favicon(path.join(__dirname, '../client/public/logo.png')))
 app.use(bodyParser())
 app.use(
   nunjucks({

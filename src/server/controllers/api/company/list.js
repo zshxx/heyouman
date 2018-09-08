@@ -1,10 +1,12 @@
 // 获取用户列表
-const User = require('daos/user')
+const Company = require('daos/company')
 module.exports = async ctx => {
-  const user = new User()
+  const company = new Company()
+
+  const data = await company.getCompanyList(ctx.query)
 
   ctx.body = {
     code: 0,
-    data: await user.getUserList()
+    data: data
   }
 }
