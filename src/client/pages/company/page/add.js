@@ -1,8 +1,8 @@
 // 客户管理
-import CompanyAdd from './components/add'
+import CompanyAdd from '../components/add'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import * as Actions from './actions'
+import * as Actions from '../actions'
 
 function mapStateToProps (state) {
   const userInfo = state.userinfo

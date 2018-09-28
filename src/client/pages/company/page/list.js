@@ -1,8 +1,8 @@
 // 客户管理
-import CompanyList from './components/list'
+import CompanyList from '../components/list'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import * as Actions from './actions'
+import * as Actions from '../actions'
 
 function mapStateToProps (state) {
   const company = state.company

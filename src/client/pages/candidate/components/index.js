@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
 
-import Add from 'pages/company/add'
-import List from 'pages/company/list'
+import Add from 'pages/company/page/add'
+import List from 'pages/company/page/list'
 
 class Company extends Component {
   render () {
